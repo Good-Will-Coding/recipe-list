@@ -97,6 +97,7 @@ button:focus {
   text-transform: uppercase;
   font-weight: 500;
   margin-left: 0.7rem;
+  cursor: pointer;
 }
 
 input[type="text"] { 

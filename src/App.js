@@ -3,6 +3,7 @@ import axios from "axios";
 import "./App.css";
 
 import Form from "./components/Form";
+import Recipes from "./components/Recipes";
 
 class App extends Component {
   state = {
@@ -14,7 +15,7 @@ class App extends Component {
     e.preventDefault();
     const api_call = await axios
       .get(
-        `https://cors-anywhere.herokuapp.com/https://www.food2fork.com/api/search?key=79cdeb4cc5e162e2a8753d563ace7027&q={${recipeName}}&count=5`
+        `https://cors-anywhere.herokuapp.com/https://www.food2fork.com/api/search?key=79cdeb4cc5e162e2a8753d563ace7027&q={${recipeName}}&count=6`
       )
       .then(res => {
         let data = res.data;
@@ -34,9 +35,7 @@ class App extends Component {
           <h1 className="App-title">Recipe Search</h1>
         </header>
         <Form getRecipe={this.getRecipe} />
-        { this.state.recipes.map(recipe => {
-          return <p key={recipe.recipe_id}>{ recipe.title }</p>
-        })}
+        <Recipes recipes={this.state.recipes} />
       </div>
     );
   }
